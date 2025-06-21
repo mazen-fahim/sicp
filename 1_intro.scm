@@ -42,6 +42,46 @@
 ;           ^      ^
 ;       predicate  action
 
+(define (abs2 x)
+  (if (< x 0)
+      (- x)
+      (x)))
+; if is the same as cond but tests a single condition (cond is alias to complete case analysis foun in math)
+
+
+
+
+
+
+; you can package internal definitions inside a larger definition
+; this is called block structure
+(define (sqrt x)
+  (define (try guess x)
+    (if (good-enough? guess x)
+        guess
+        (try (improve guess x) x)))
+  (define (improve guess x)
+    (average guess (/ x guess)))
+  (define (good-enough? guess x)
+    (< (abs (- (square guess) x))
+       .001))
+  (try 1 x))
+
+(sqrt 2)
+
+; SUMMARY
+; 1. Primitive Elements (procedures + data)
+; 2. Means of combination ( "()" + if + cond )
+;    building compisitions with operator and operands (this is combining procedures)
+;    we are yet to see how to compose data
+; 3. Means of abstraction ( define )
+
+(define a1 (* 5 5))
+(define (a2) (* 5 5))
+a1
+(a2)
+
+
 
 
 
